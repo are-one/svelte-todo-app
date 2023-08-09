@@ -3,7 +3,6 @@
 
 <div class="container is-fullhd is-fluid">
 	<h1 class="is-size-3">TODO APP</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 
 	<div class="columns">
 		<div class="column is-4">
@@ -12,9 +11,27 @@
 					<div class="card-header-title">Task</div>
 				</div>
 				<div class="card-content">
-					<p>Belajar HTML</p>
-					<p>Belaj Javascript</p>
-					<p>Belaj Svelte</p>
+					<div class="card mb-3 has-background-primary-light">
+						<div class="card-content">
+							<p class="has-text-primary-dark">Belajar HTML</p>
+						</div>
+					</div>
+					<div class="card mb-3 has-background-primary-light">
+						<div class="card-content">
+							<p class="has-text-primary-dark">Belajar CSS Framework Bulma</p>
+						</div>
+					</div>
+					<div class="card mb-3 has-background-primary-light">
+						<div class="card-content">
+							<p class="has-text-primary-dark">Belajar Javascript</p>
+						</div>
+					</div>
+					<div class="card has-background-primary-light">
+						<div class="card-content">
+							<p class="has-text-primary-dark">Belajar Svelte</p>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
