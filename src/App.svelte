@@ -1,20 +1,17 @@
 <script>
-	export let name;
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
+<div class="container is-fullhd">
+	<h1 class="is-size-3">TODO APP</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+</div>
+
+<!-- Cara 2 Mengintegrasikan css framework Bulma -->
+<svelte:head>
+	<link rel="stylesheet" href="/bulma.min.css" />
+</svelte:head>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
 	h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
