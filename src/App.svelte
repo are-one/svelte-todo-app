@@ -1,9 +1,25 @@
 <script>
 </script>
 
-<div class="container is-fullhd">
+<div class="container is-fullhd is-fluid">
 	<h1 class="is-size-3">TODO APP</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+
+	<div class="columns">
+		<div class="column">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-header-title">Task</div>
+				</div>
+				<div class="card-content">
+					<p>Belajar HTML</p>
+					<p>Belaj Javascript</p>
+					<p>Belaj Svelte</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
 
 <!-- Cara 2 Mengintegrasikan css framework Bulma -->
@@ -19,9 +35,4 @@
 		font-weight: 100;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
