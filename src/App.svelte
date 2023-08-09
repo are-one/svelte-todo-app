@@ -1,4 +1,11 @@
 <script>
+	import TodoCard from "./TodoCard.svelte";
+	let cards = [
+		'Belajar HTML',
+		'Belajar CSS Framework Bulma',
+		'Belajar Javascript',
+		'Belajar Svelte'
+	];
 </script>
 
 <div class="container is-fullhd is-fluid">
@@ -11,27 +18,9 @@
 					<div class="card-header-title">Task</div>
 				</div>
 				<div class="card-content">
-					<div class="card mb-3 has-background-primary-light">
-						<div class="card-content">
-							<p class="has-text-primary-dark">Belajar HTML</p>
-						</div>
-					</div>
-					<div class="card mb-3 has-background-primary-light">
-						<div class="card-content">
-							<p class="has-text-primary-dark">Belajar CSS Framework Bulma</p>
-						</div>
-					</div>
-					<div class="card mb-3 has-background-primary-light">
-						<div class="card-content">
-							<p class="has-text-primary-dark">Belajar Javascript</p>
-						</div>
-					</div>
-					<div class="card has-background-primary-light">
-						<div class="card-content">
-							<p class="has-text-primary-dark">Belajar Svelte</p>
-						</div>
-					</div>
-
+					{#each cards as card}
+						<TodoCard content={card} />
+					{/each}
 				</div>
 			</div>
 		</div>
