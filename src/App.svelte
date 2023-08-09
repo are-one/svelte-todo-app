@@ -7,7 +7,7 @@
 
 	<div class="columns">
 		<div class="column">
-			<div class="card">
+			<div class="card has-background-light">
 				<div class="card-header">
 					<div class="card-header-title">Task</div>
 				</div>
