@@ -6,7 +6,7 @@
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 
 	<div class="columns">
-		<div class="column">
+		<div class="column is-4">
 			<div class="card has-background-light">
 				<div class="card-header">
 					<div class="card-header-title">Task</div>
