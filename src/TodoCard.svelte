@@ -1,5 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition"; // fade, fly, slide
+  
 
     export let content, listName, index;
     const dispatch = createEventDispatcher();
@@ -15,9 +17,10 @@
     function handlerMoveLeft() {
         dispatch('moveLeft', {index});
     }
+    
 </script>
 
-<div class="card mb-3 has-background-primary-light">
+<div class="card mb-3 has-background-primary-light" transition:slide>
     <div class="card-content">
         <div class="columns is-centered">
             {#if listName != "Task"}
