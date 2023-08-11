@@ -1,10 +1,11 @@
 <script>
 	import TodoCard from "./TodoCard.svelte";
+
 	let cards = [
-		'Belajar HTML',
-		'Belajar CSS Framework Bulma',
-		'Belajar Javascript',
-		'Belajar Svelte'
+		{todo: 'Belajar HTML', list: 'Tasks'},
+		{todo: 'Belajar CSS Framework Bulma', list: 'Tasks'},
+		{todo: 'Belajar Javascript', list: 'Tasks'},
+		{todo: 'Belajar Svelte', list: 'Tasks'},
 	];
 </script>
 
@@ -19,7 +20,7 @@
 				</div>
 				<div class="card-content">
 					{#each cards as card}
-						<TodoCard content={card} />
+						<TodoCard content={card.todo} />
 					{/each}
 				</div>
 			</div>
