@@ -24,6 +24,11 @@
         let data = event.detail;
         dispatch('deleteCard', { index: data.index, listName});
     }
+
+    function handlerEventMoveRight(event) {
+        let data = event.detail;
+        dispatch('moveRight', { index: data.index, listName});
+    }
 </script>
 
 <style></style>
@@ -35,7 +40,13 @@
         </div>
         <div class="card-content">
             {#each cards as card, index}
-                <TodoCard content={card.todo} listName={listName} index={index} on:deleteCard={handlerEventDeleteCard}/>
+                <TodoCard
+                    content={card.todo}
+                    listName={listName}
+                    index={index}
+                    on:deleteCard={handlerEventDeleteCard}
+                    on:moveRight={handlerEventMoveRight}
+                    />
             {/each}
             <input type="text" class="input is-primary mb-1" bind:value={todo} on:keydown={onInputEnter}/>
             <button on:click={handlerAddCard} class="button is-primary">Add Card</button>

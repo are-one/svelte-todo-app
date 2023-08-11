@@ -45,6 +45,22 @@
 		}
 	}
 
+	function handlerEventMoveRight(event) {
+		let data = event.detail;
+
+		if(data.listName == 'Task'){
+			let cardToMove = taskCards.splice(data.index, 1);
+			inProgressCards = [...inProgressCards, cardToMove[0]];
+			
+			taskCards = taskCards;
+		}else if(data.listName == 'In Progress'){
+			let cardToMove = inProgressCards.splice(data.index, 1);
+			doneCards = [...doneCards, cardToMove[0]];
+			
+			inProgressCards = inProgressCards;
+		}
+	}
+
 </script>
 
 <div class="container is-fullhd is-fluid">
@@ -56,12 +72,14 @@
 			listName={'Task'}
 			on:addCard={handlerEventAddCard}
 			on:deleteCard={handlerEventDeleteCard}
+			on:moveRight={handlerEventMoveRight}
 			/>
-		<CardList 
+			<CardList 
 			cards={inProgressCards} 
 			listName={'In Progress'}  
 			on:addCard={handlerEventAddCard}
 			on:deleteCard={handlerEventDeleteCard}
+			on:moveRight={handlerEventMoveRight}
 			/>
 		<CardList 
 			cards={doneCards}
