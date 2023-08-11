@@ -1,10 +1,13 @@
 <script>
   import CardList from "./CardList.svelte";
 
+	let taskCardsLocalStorage = JSON.parse(localStorage.getItem('taskCards'));
+	let inProgressCardsLocalStorage = JSON.parse(localStorage.getItem('inProgressCards'));
+	let doneCardsLocalStorage = JSON.parse(localStorage.getItem('doneCards'));
 
-	let taskCards = [];
-	let inProgressCards = [];
-	let doneCards = [];
+	let taskCards = taskCardsLocalStorage ? taskCardsLocalStorage : [];
+	let inProgressCards = inProgressCardsLocalStorage ? inProgressCardsLocalStorage : [];
+	let doneCards = doneCardsLocalStorage ? doneCardsLocalStorage : [];
 
 	function handlerEventAddCard(event) {
 		let data = event.detail;
@@ -13,11 +16,16 @@
         // Misal cards.push() tampilan list card tidak akan ter update
 		if(data.listName == 'Task'){
 			taskCards = [...taskCards, {todo : data.todo}];
+			localStorage.setItem('taskCards', JSON.stringify(taskCards));
+
 		}else if(data.listName == 'In Progress'){
 			inProgressCards = [...inProgressCards, {todo : data.todo}];
-			
+			localStorage.setItem('inProgressCards', JSON.stringify(inProgressCards));
+
 		}else if(data.listName == 'Done'){
 			doneCards = [...doneCards, {todo : data.todo}];
+			localStorage.setItem('doneCards', JSON.stringify(doneCards));
+
 		}
 		
 	}
@@ -28,14 +36,18 @@
 		if(data.listName == 'Task'){
 			taskCards.splice(data.index, 1);
 			taskCards = taskCards;
+			localStorage.setItem('taskCards', JSON.stringify(taskCards));
 
 		}else if(data.listName == 'In Progress'){
 			inProgressCards.splice(data.index, 1);
 			inProgressCards = inProgressCards;
+			localStorage.setItem('inProgressCards', JSON.stringify(inProgressCards));
 
 		}else if(data.listName == 'Done'){
 			doneCards.splice(data.index, 1);
 			doneCards = doneCards;
+			localStorage.setItem('doneCards', JSON.stringify(doneCards));
+
 		}
 	}
 
@@ -46,10 +58,18 @@
 			let cardToMove = taskCards.splice(data.index, 1);
 			inProgressCards = [...inProgressCards, cardToMove[0]];
 			taskCards = taskCards;
+
+			localStorage.setItem('taskCards', JSON.stringify(taskCards));
+			localStorage.setItem('inProgressCards', JSON.stringify(inProgressCards));
+
 		}else if(data.listName == 'In Progress'){
 			let cardToMove = inProgressCards.splice(data.index, 1);
 			doneCards = [...doneCards, cardToMove[0]];
 			inProgressCards = inProgressCards;
+
+			localStorage.setItem('inProgressCards', JSON.stringify(inProgressCards));
+			localStorage.setItem('doneCards', JSON.stringify(doneCards));
+
 		}
 	}
 
@@ -60,10 +80,17 @@
 			let cardToMove = inProgressCards.splice(data.index, 1);
 			taskCards = [...taskCards, cardToMove[0]];
 			inProgressCards = inProgressCards;
+
+			localStorage.setItem('inProgressCards', JSON.stringify(inProgressCards));
+			localStorage.setItem('taskCards', JSON.stringify(taskCards));
+
 		}else if(data.listName == 'Done'){
 			let cardToMove = doneCards.splice(data.index, 1);
 			inProgressCards = [...inProgressCards, cardToMove[0]];
 			doneCards = doneCards;
+
+			localStorage.setItem('doneCards', JSON.stringify(doneCards));
+			localStorage.setItem('inProgressCards', JSON.stringify(inProgressCards));
 		}
 	}
 
