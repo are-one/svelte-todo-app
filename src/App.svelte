@@ -9,6 +9,14 @@
 	];
 
 	let todo = "";
+
+	function handlerAddCard() {
+		// DOM element dari data cards tidak akan terupdate jika tidak menggunakan operator assigment "="
+		// Misal cards.push() tampilan list card tidak akan ter update
+
+		cards = [...cards, {todo, list: 'Tasks'}];
+		todo = "";
+	}
 </script>
 
 <div class="container is-fullhd is-fluid">
@@ -24,9 +32,8 @@
 					{#each cards as card}
 						<TodoCard content={card.todo} />
 					{/each}
-					<p>{ todo }</p>
-					<input type="text" class="input is-primary mb-1" bind:value={todo} />
-					<button class="button is-primary">Add Card</button>
+					<input type="text" class="input is-primary mb-1" bind:value={todo}/>
+					<button on:click={handlerAddCard} class="button is-primary">Add Card</button>
 				</div>
 			</div>
 		</div>
