@@ -2,13 +2,7 @@
   import CardList from "./CardList.svelte";
 
 
-	let taskCards = [
-		{todo: 'Belajar HTML', list: 'Tasks'},
-		{todo: 'Belajar CSS Framework Bulma', list: 'Tasks'},
-		{todo: 'Belajar Javascript', list: 'Tasks'},
-		{todo: 'Belajar Svelte', list: 'Tasks'},
-	];
-
+	let taskCards = [];
 	let inProgressCards = [];
 	let doneCards = [];
 
@@ -51,13 +45,25 @@
 		if(data.listName == 'Task'){
 			let cardToMove = taskCards.splice(data.index, 1);
 			inProgressCards = [...inProgressCards, cardToMove[0]];
-			
 			taskCards = taskCards;
 		}else if(data.listName == 'In Progress'){
 			let cardToMove = inProgressCards.splice(data.index, 1);
 			doneCards = [...doneCards, cardToMove[0]];
-			
 			inProgressCards = inProgressCards;
+		}
+	}
+
+	function handlerEventMoveLeft(event) {
+		let data = event.detail;
+
+		if(data.listName == 'In Progress'){
+			let cardToMove = inProgressCards.splice(data.index, 1);
+			taskCards = [...taskCards, cardToMove[0]];
+			inProgressCards = inProgressCards;
+		}else if(data.listName == 'Done'){
+			let cardToMove = doneCards.splice(data.index, 1);
+			inProgressCards = [...inProgressCards, cardToMove[0]];
+			doneCards = doneCards;
 		}
 	}
 
@@ -74,18 +80,20 @@
 			on:deleteCard={handlerEventDeleteCard}
 			on:moveRight={handlerEventMoveRight}
 			/>
-			<CardList 
+		<CardList 
 			cards={inProgressCards} 
 			listName={'In Progress'}  
 			on:addCard={handlerEventAddCard}
 			on:deleteCard={handlerEventDeleteCard}
 			on:moveRight={handlerEventMoveRight}
+			on:moveLeft={handlerEventMoveLeft}
 			/>
 		<CardList 
 			cards={doneCards}
 			listName={'Done'}  
 			on:addCard={handlerEventAddCard}
 			on:deleteCard={handlerEventDeleteCard}
+			on:moveLeft={handlerEventMoveLeft}
 			/>
 	</div>
 </div>

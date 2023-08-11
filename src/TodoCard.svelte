@@ -11,6 +11,10 @@
     function handlerMoveRight() {
         dispatch('moveRight', {index});
     }
+
+    function handlerMoveLeft() {
+        dispatch('moveLeft', {index});
+    }
 </script>
 
 <div class="card mb-3 has-background-primary-light">
@@ -18,7 +22,7 @@
         <div class="columns is-centered">
             {#if listName != "Task"}
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <div class="column is-1 is-flex is-justify-content-center">
+                <div class="column is-1 is-flex is-justify-content-center" on:click={handlerMoveLeft}>
                     <span class="icon has-text-primary">
                         <i class="fas fa-chevron-left"></i>
                     </span>
