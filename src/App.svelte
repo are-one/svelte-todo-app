@@ -7,6 +7,8 @@
 		{todo: 'Belajar Javascript', list: 'Tasks'},
 		{todo: 'Belajar Svelte', list: 'Tasks'},
 	];
+
+	let todo = "";
 </script>
 
 <div class="container is-fullhd is-fluid">
@@ -22,6 +24,9 @@
 					{#each cards as card}
 						<TodoCard content={card.todo} />
 					{/each}
+					<p>{ todo }</p>
+					<input type="text" class="input is-primary mb-1" bind:value={todo} />
+					<button class="button is-primary">Add Card</button>
 				</div>
 			</div>
 		</div>
