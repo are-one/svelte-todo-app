@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+    import { createEventDispatcher } from "svelte";
     import TodoCard from "./TodoCard.svelte";
 
     // Mendefinisikan props
@@ -19,6 +19,11 @@
             handlerAddCard();
         }
     }
+
+    function handlerEventDeleteCard(event) {
+        let data = event.detail;
+        dispatch('deleteCard', { index: data.index, listName});
+    }
 </script>
 
 <style></style>
@@ -29,8 +34,8 @@
             <div class="card-header-title">{listName}</div>
         </div>
         <div class="card-content">
-            {#each cards as card}
-                <TodoCard content={card.todo} listName={listName}/>
+            {#each cards as card, index}
+                <TodoCard content={card.todo} listName={listName} index={index} on:deleteCard={handlerEventDeleteCard}/>
             {/each}
             <input type="text" class="input is-primary mb-1" bind:value={todo} on:keydown={onInputEnter}/>
             <button on:click={handlerAddCard} class="button is-primary">Add Card</button>

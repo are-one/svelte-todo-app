@@ -28,6 +28,23 @@
 		
 	}
 
+	function handlerEventDeleteCard(event) {
+		let data = event.detail;
+
+		if(data.listName == 'Task'){
+			taskCards.splice(data.index, 1);
+			taskCards = taskCards;
+
+		}else if(data.listName == 'In Progress'){
+			inProgressCards.splice(data.index, 1);
+			inProgressCards = inProgressCards;
+
+		}else if(data.listName == 'Done'){
+			doneCards.splice(data.index, 1);
+			doneCards = doneCards;
+		}
+	}
+
 </script>
 
 <div class="container is-fullhd is-fluid">
@@ -38,16 +55,19 @@
 			cards={taskCards}
 			listName={'Task'}
 			on:addCard={handlerEventAddCard}
+			on:deleteCard={handlerEventDeleteCard}
 			/>
 		<CardList 
 			cards={inProgressCards} 
 			listName={'In Progress'}  
 			on:addCard={handlerEventAddCard}
+			on:deleteCard={handlerEventDeleteCard}
 			/>
 		<CardList 
 			cards={doneCards}
 			listName={'Done'}  
 			on:addCard={handlerEventAddCard}
+			on:deleteCard={handlerEventDeleteCard}
 			/>
 	</div>
 </div>
