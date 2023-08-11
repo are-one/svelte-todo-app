@@ -17,6 +17,12 @@
 		cards = [...cards, {todo, list: 'Tasks'}];
 		todo = "";
 	}
+
+	function onInputEnter(e) {
+		if(e.key == "Enter"){
+			handlerAddCard();
+		}
+	}
 </script>
 
 <div class="container is-fullhd is-fluid">
@@ -32,7 +38,7 @@
 					{#each cards as card}
 						<TodoCard content={card.todo} />
 					{/each}
-					<input type="text" class="input is-primary mb-1" bind:value={todo}/>
+					<input type="text" class="input is-primary mb-1" bind:value={todo} on:keydown={onInputEnter}/>
 					<button on:click={handlerAddCard} class="button is-primary">Add Card</button>
 				</div>
 			</div>
