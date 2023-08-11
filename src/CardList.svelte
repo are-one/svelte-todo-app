@@ -1,16 +1,16 @@
 <script>
+  import { createEventDispatcher } from "svelte";
     import TodoCard from "./TodoCard.svelte";
 
     // Mendefinisikan props
     export let cards, listName;
 
+    const dispatch = createEventDispatcher();
+
     let todo = "";
-
-    function handlerAddCard() {
-        // DOM element dari data cards tidak akan terupdate jika tidak menggunakan operator assigment "="
-        // Misal cards.push() tampilan list card tidak akan ter update
-
-        cards = [...cards, {todo, list: 'Tasks'}];
+    function handlerAddCard() {        
+        // Mengirim data melalui event dispatcher
+        dispatch('addCard',{todo, listName});
         todo = "";
     }
 
@@ -30,7 +30,7 @@
         </div>
         <div class="card-content">
             {#each cards as card}
-                <TodoCard content={card.todo} />
+                <TodoCard content={card.todo} listName={listName}/>
             {/each}
             <input type="text" class="input is-primary mb-1" bind:value={todo} on:keydown={onInputEnter}/>
             <button on:click={handlerAddCard} class="button is-primary">Add Card</button>
